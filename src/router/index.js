@@ -34,7 +34,9 @@ Router.beforeEach((to, from, next) => {
   // network mainnet/testnet 目前是主网还是哪一条测试网络
   //   user lilong/testuser/... 用户端设置的用户名，方便页面作出更友好的交互
 
-  const blockchain = to.query.blockchain || 'eth'
+  const blockchain = to.query.blockchain || 'mydapp'
+
+  console.log(blockchain)
 
   if (to.path === '/') {
     // 如果没有lang参数，那么使用localStorage里设置的语言，设置为当前语言
@@ -53,6 +55,7 @@ Router.beforeEach((to, from, next) => {
         lang = lang.substr(0, 2)
       }
     }
+    console.log(`1:${lang}`)
 
     if (lang) {
       lang = lang.toLowerCase().substr(0, 2)
@@ -60,19 +63,27 @@ Router.beforeEach((to, from, next) => {
       if (['en', 'ja', 'zh'].indexOf(lang) >= 0) {
         next({
           replace: true,
-          name: `${blockchain}-${lang}`,
+          // name: `${blockchain}-${lang}`,
+          name: `${blockchain}`,
           query: to.query
         })
         return
       }
     }
+
+    console.log(`2:${lang}`)
+
+    console.log(`Blockchain:${blockchain}`)
     // 如果不是我们支持的语言，那么缺省设置为en
     next({
       replace: true,
-      name: `${blockchain}-en`,
+      // name: `${blockchain}-en`,
+      path: `/${blockchain}/`,
+      // name: `${blockchain}`,
       query: to.query
     })
   } else {
+    console.log('next')
     next()
   }
 })

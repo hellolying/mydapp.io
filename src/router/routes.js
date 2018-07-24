@@ -1,12 +1,23 @@
 export default [
   {
-    path: '/',
+    path: '/mydapp',
     component: () => import('layouts/default'),
     children: [
-      {path: '', component: () => import('pages/index')}
+      {path: '', component: () => import('pages/index-eth')},
+      {path: 'eth', component: () => import('pages/index-eth')},
+      {path: 'eos', component: () => import('pages/index-eos')},
+      {path: 'bch', component: () => import('pages/index-bch')}
     ]
   },
-
+  // 以太主页
+  {
+    path: '/mydapp/:myDappId',
+    name: 'mydapp',
+    component: () => import('layouts/detail'),
+    children: [
+      {path: 'detail', component: () => import('pages/detail')}
+    ]
+  },
   // 中文以太主页
   {
     path: '/index/eth/zh',
