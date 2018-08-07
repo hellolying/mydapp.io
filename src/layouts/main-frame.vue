@@ -20,8 +20,8 @@
           MyDapp
         </q-toolbar-title>
       </q-toolbar>
-      <q-tabs>
-        <q-route-tab slot="title" icon="view_quilt" to="/mydapp/eth" replace label="ETH" />
+      <q-tabs v-if="this.$route.meta.isMainFrame">
+        <q-route-tab slot="title" icon="view_quilt" to="/mydapp/eth" replace label="ETH" default="true" />
         <q-route-tab slot="title" icon="view_day" to="/mydapp/eos" replace label="EOS" />
         <q-route-tab slot="title" icon="input" to="/mydapp/bch" replace label="BCH" />
       </q-tabs>

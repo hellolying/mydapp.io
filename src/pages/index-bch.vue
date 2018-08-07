@@ -44,7 +44,7 @@
 
 <script>
 
-import dapplist from 'assets/dapplist.json'
+import dapplist from 'assets/dapplist-eos.json'
 
 export default {
   data () {

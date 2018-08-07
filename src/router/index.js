@@ -55,7 +55,6 @@ Router.beforeEach((to, from, next) => {
         lang = lang.substr(0, 2)
       }
     }
-    console.log(`1:${lang}`)
 
     if (lang) {
       lang = lang.toLowerCase().substr(0, 2)
@@ -71,8 +70,6 @@ Router.beforeEach((to, from, next) => {
       }
     }
 
-    console.log(`2:${lang}`)
-
     console.log(`Blockchain:${blockchain}`)
     // 如果不是我们支持的语言，那么缺省设置为en
     next({
@@ -83,7 +80,6 @@ Router.beforeEach((to, from, next) => {
       query: to.query
     })
   } else {
-    console.log('next')
     next()
   }
 })

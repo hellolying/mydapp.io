@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     goToDappDetail (myDappId) {
-      this.$router.push({ path: `/mydapp/${myDappId}/detail` })
+      this.$router.push({ path: `/mydapp/detail/eos/${myDappId}` })
     }
   }
 }

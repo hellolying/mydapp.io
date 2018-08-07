@@ -1,47 +1,24 @@
 export default [
-  {
-    path: '/mydapp',
-    component: () => import('layouts/default'),
-    children: [
-      {path: '', component: () => import('pages/index-eth')},
-      {path: 'eth', component: () => import('pages/index-eth')},
-      {path: 'eos', component: () => import('pages/index-eos')},
-      {path: 'bch', component: () => import('pages/index-bch')}
-    ]
-  },
   // 以太主页
   {
-    path: '/mydapp/:myDappId',
+    path: '/mydapp',
+    component: () => import('layouts/main-frame'),
+    children: [
+      {path: '', meta: { isMainFrame: true }, component: () => import('pages/index-eth')},
+      {path: 'eth', meta: { isMainFrame: true }, component: () => import('pages/index-eth')},
+      {path: 'eos', meta: { isMainFrame: true }, component: () => import('pages/index-eos')},
+      {path: 'bch', meta: { isMainFrame: true }, component: () => import('pages/index-bch')}
+    ]
+  },
+  // 详情页
+  {
+    path: '/mydapp/detail/',
     name: 'mydapp',
-    component: () => import('layouts/detail'),
+    component: () => import('layouts/main-frame'),
     children: [
-      {path: 'detail', component: () => import('pages/detail')}
-    ]
-  },
-  // 中文以太主页
-  {
-    path: '/index/eth/zh',
-    component: () => import('layouts/default'),
-    children: [
-      {path: '', name: 'eth-zh', component: () => import('pages/index-eth-zh')}
-    ]
-  },
-
-  // 日文以太主页
-  {
-    path: '/index/eth/ja',
-    component: () => import('layouts/default'),
-    children: [
-      {path: '', name: 'eth-ja', component: () => import('pages/index-eth-ja')}
-    ]
-  },
-
-  // 英文以太主页
-  {
-    path: '/index/eth/en',
-    component: () => import('layouts/default'),
-    children: [
-      {path: '', name: 'eth-en', component: () => import('pages/index-eth-en')}
+      {path: 'eth/:myDappId', meta: { isMainFrame: false }, component: () => import('pages/detail')},
+      {path: 'eos/:myDappId', meta: { isMainFrame: false }, component: () => import('pages/eosDetail')},
+      {path: 'bch/:myDappId', meta: { isMainFrame: false }, component: () => import('pages/eosDetail')}
     ]
   },
 
